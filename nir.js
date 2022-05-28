@@ -14,6 +14,7 @@ enableButton.addEventListener("click", async (ev) => {
 function modifyPage() {
 
 	const htmlEntities = {
+		"&nbsp;": " ",
     "&amp;": "&",
     "&lt;": "<",
     "&gt;": ">",
@@ -36,7 +37,6 @@ function modifyPage() {
 			if (c.nodeName === '#text') {
 				
 				let currentTextContentList = c.textContent.split(' ').map(word => {
-					// console.log(word)
 					if (word.length <= 1) {
 						return word
 					}
@@ -51,7 +51,6 @@ function modifyPage() {
 
 					const initial = word.substring(0, Math.floor(word.length/2+0.5))
 					const ending = word.substring(Math.floor(word.length/2+0.5), word.length)
-					// console.log(`<b>${initial}</b>${ending}`)
 					return `<b>${initial}</b>${ending}`
 				})
 				
@@ -60,7 +59,7 @@ function modifyPage() {
 				
 			}
 		})
-		console.log(p.innerHTML, currentInnerHTML)
+		// console.log(p.innerHTML, currentInnerHTML)
 		p.innerHTML = currentInnerHTML
 	})
 }
